@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build_backend = "setuptools.build_meta"
+
+[project]
+name = "llm-costtracker"
+version = "0.1.0"
+description = "Simple LLM cost tracking tool"
+authors = [
+    {name="Vishal Verma"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
