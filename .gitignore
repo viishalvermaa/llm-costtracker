@@ -10,3 +10,6 @@ wheels/
 # Virtual environments
 .venv
 .env
+
+# Created file for cost tracking
+.cost.log

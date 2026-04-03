@@ -16,3 +16,6 @@ dependencies = []
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[project.scripts]
+costtracker="costtracker.cli:cli"

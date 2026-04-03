@@ -1,0 +1,3 @@
+budget=0.000030
+log_file="cost.log"
+provider="gemini"

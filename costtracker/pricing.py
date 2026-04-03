@@ -1,23 +1,16 @@
-from .exceptions import UnsupportedModelError
+from .pricing_loader import fetch_remote_pricing
 
-# Prices per token (converted from per 1k tokens)
-MODEL_PRICING={
-    "gemini-2.5-flash-lite": {
-        "input": 0.00035 / 1000,
-        "output": 0.00105 / 1000
-    },
-    "gpt-4":{
-        "input":0.03/1000,
-        "output":0.06/1000
-    },
-    "gpt-3.5-turbo":{
-        "input":0.001/1000,
-        "output":0.002/1000
-    }
-}
+def get_pricing(model:str):
+    """
+    Get pricing for a given model from remote source
+    """
 
-def get_pricing(model:str)->dict:
-    if model not in MODEL_PRICING:
-        raise UnsupportedModelError(f"Pricing not found for model: {model}")
+    pricing_data=fetch_remote_pricing()
+
+    if not pricing_data:
+        raise ValueError("Pricing service unavailable")
+    if model not in pricing_data:
+        raise ValueError(f"Pricing not found for model: {model}")
     
-    return MODEL_PRICING[model]
+    return pricing_data[model]
+    
