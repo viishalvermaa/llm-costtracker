@@ -12,4 +12,6 @@ wheels/
 .env
 
 # Created file for cost tracking
-.cost.log
+cost.log
+
+uv.lock

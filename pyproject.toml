@@ -1,21 +1,22 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build_backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "llm-costtracker"
+name = "costtracker"
 version = "0.1.0"
-description = "Simple LLM cost tracking tool"
+description = "Simple and lightweight Python package to track LLM API cost"
 authors = [
     {name="Vishal Verma"}
 ]
 readme = "README.md"
 requires-python = ">=3.11"
+license = {text = "MIT"}
 
-dependencies = []
-
-[tool.setuptools.packages.find]
-where = ["."]
+dependencies = [
+    "python-dotenv",
+    "google-genai"
+]
 
 [project.scripts]
 costtracker="costtracker.cli:cli"
