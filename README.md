@@ -1,7 +1,7 @@
 # 🚀 costtracker
 
 <p align="center">
-  <b>Track your LLM API cost in real time — with one line of code.</b>
+  <b>Track your LLM API cost in your terminal in real time — with one command.</b>
 </p>
 
 <p align="center">
@@ -28,9 +28,9 @@ No dashboards. No setup. No complexity.
 
 ## 🔥 Features
 
-- 📊 Real-time token + cost tracking  
-- ⚡ One-line integration (`track(response)`)  
-- 🧠 Works with OpenAI-compatible APIs for now (Gemini included)  
+- 📊 Real-time cost tracking  
+- ⚡ One-line integration  
+- 🧠 Works with OpenAI and Gemini models (present)  
 - 🪶 Lightweight & zero-config  
 - 🧱 Built for developers  
 
@@ -39,9 +39,9 @@ No dashboards. No setup. No complexity.
 ## ⚡ Quick Demo
 
 ```python
-from costtracker import track
+pip install costtracker
 
-track(response)
+costtracker run file.py
 ```
 
 ## ⚡ Output
@@ -49,11 +49,6 @@ track(response)
 Model: gemini-2.5-flash-lite
 Tokens: 13 (input: 4, output: 9)
 Cost: $0.000011
-```
-
-## 📦 Installation
-```
-pip install -e .
 ```
 
 ## ⚙️ Setup
@@ -67,22 +62,20 @@ GEMINI_API_KEY=your_api_key_here
 ```python
 import os
 from dotenv import load_dotenv
-from openai import OpenAI
 from costtracker import track
+from google import genai
 
 load_dotenv()
 
-client = OpenAI(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+api_key=os.getenv("GEMINI_API_KEY")
+
+client=genai.Client(api_key=api_key)
+
+response=client.models.generate_content(
+    model="gemini-2.5-flash-lite",
+    contents="Hello there!"
 )
 
-response = client.chat.completions.create(
-    model="gemini-2.5-flash-lite",
-    messages=[
-        {"role": "user", "content": "Hello there!"}
-    ]
-)
 
 track(response)
 ```
