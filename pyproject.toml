@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "costtracker"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple and lightweight Python package to track LLM API cost"
 authors = [
     {name="Vishal Verma"}

@@ -16,5 +16,3 @@ response=client.models.generate_content(
 
 
 track(response)
-track(response)
-track(response)
